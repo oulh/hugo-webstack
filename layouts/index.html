@@ -13,7 +13,7 @@
 <meta property="og:description" content="">
 <meta property="og:image" content="">
 <meta property="og:site_name" content="">
-<link rel="shortcut icon" href="./images/favicon.png">
+<link rel="shortcut icon" href="./images/app-ico.png">
 <link rel="apple-touch-icon" href="./images/app-ico.png">
 <link rel='stylesheet' id='font-awesome-css'  href='./css/font-awesome.min.css?ver=6.5.1' type='text/css' media='all' />
 <link rel='stylesheet' id='bootstrap-css'  href='./css/bootstrap.css?ver=3.4.1' type='text/css' media='all' />
@@ -269,15 +269,16 @@
             }        
         });
         <!-- 黑暗和明亮模式 END -->
-        <!-- 利用iowen API 获取网址icon START --> 
+        <!-- 利用FaviconKit API 获取网址icon START --> 
         $(".geticon").each(function(){
             var url = $(this).find('a').attr('href');
-            var apiUrl="https://api.iowen.cn/favicon/"+url.replace(/^https?:\/\//, '').replace(/\/.*$/, '')+".png"
+            var domain = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+            var apiUrl = "https://api.faviconkit.com/" + domain + "/128"; // 使用 FaviconKit API
             if ($(this).find('img').attr('data-src').length === 0) {
                 $(this).find('img').attr('data-src', apiUrl);
             }
         })
-        <!-- END 利用iowen API 获取网址icon START-->
+        <!-- END 利用FaviconKit API 获取网址icon START-->
         
         $(document).on('click', '.has-sub', function(){
             var _this = $(this)

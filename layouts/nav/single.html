@@ -271,15 +271,16 @@
             }        
         });
         <!-- 黑暗和明亮模式 END -->
-        <!-- 利用iowen API 获取网址icon START --> 
+        <!-- 利用FaviconKit API 获取网址icon START --> 
         $(".geticon").each(function(){
             var url = $(this).find('a').attr('href');
-            var apiUrl="https://api.iowen.cn/favicon/"+url.replace(/^https?:\/\//, '').replace(/\/.*$/, '')+".png"
+            var domain = url.replace(/^https?:\/\//, '').replace(/\/.*$/, '');
+            var apiUrl = "https://api.faviconkit.com/" + domain + "/128"; // 使用 FaviconKit API
             if ($(this).find('img').attr('data-src').length === 0) {
                 $(this).find('img').attr('data-src', apiUrl);
             }
         })
-        <!-- END 利用iowen API 获取网址icon START-->
+        <!-- END 利用FaviconKit API 获取网址icon START-->
         $(document).on('click', '.has-sub', function(){
             var _this = $(this)
             if(!$(this).hasClass('expanded')) {
